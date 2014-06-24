@@ -1,0 +1,24 @@
+From b31f583078a5dfeb876f9abe5f975a89e9c8a1a8 Mon Sep 17 00:00:00 2001
+From: Petteri Aimonen <petteri.aimonen@espotel.com>
+Date: Thu, 26 Jun 2014 09:36:06 +0300
+Subject: [PATCH 2/2] Add libavresample as it is a dependency for libavcodec
+
+---
+ configure.ac |    1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/configure.ac b/configure.ac
+index 07941b3..807d77f 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -265,6 +265,7 @@ else
+ 
+   LIBAV_DEPS="\$(top_builddir)/gst-libs/ext/libav/libavformat/libavformat.a \
+               \$(top_builddir)/gst-libs/ext/libav/libavcodec/libavcodec.a \
++              \$(top_builddir)/gst-libs/ext/libav/libavresample/libavresample.a \
+               \$(top_builddir)/gst-libs/ext/libav/libavutil/libavutil.a"
+   if test "x$enable_static_plugins" = xyes; then
+       dnl with static linking we can't use the .a archive directly as they would
+-- 
+1.7.9.5
+

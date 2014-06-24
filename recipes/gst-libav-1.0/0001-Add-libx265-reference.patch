@@ -1,0 +1,26 @@
+From 1ee4090e7923de1be6bd02e684daa9000d60545d Mon Sep 17 00:00:00 2001
+From: OptoFidelity Build Machine <support@optofidelity.com>
+Date: Wed, 31 May 2017 15:21:23 +0300
+Subject: [PATCH] Add libx265 reference
+
+---
+ configure.ac | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/configure.ac b/configure.ac
+index f1dcbce..102f6f5 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -298,6 +298,9 @@ else
+     AC_WARN([libbz2 not found, matroska demuxer will not be able to read bz2 tracks])
+   fi
+ 
++  dnl ** x265 library
++  LIBS="$LIBS -lx265"
++
+   dnl *** Check for lzma
+   save_LIBS=$LIBS
+   LIBS="$LIBS -llzma"
+-- 
+1.9.1
+
