@@ -1,0 +1,35 @@
+# -*- Mode: Python -*- vi:si:et:sw=4:sts=4:ts=4:syntax=python
+
+class Recipe(recipe.Recipe):
+    version = '1.1'
+    name = 'x265'
+    licenses = [License.GPL]
+    stype = SourceType.TARBALL
+    url = 'https://bitbucket.org/multicoreware/x265/get/1.1.tar.gz'
+    tarball_dirname= 'multicoreware-x265-ae9609aeebdc'
+
+    files_libs = ['libx265']
+    files_bins = ['x265']
+    files_devel = ['lib/pkgconfig/x265.pc', 'include/x265.h',
+                   'include/x265_config.h']
+
+    def configure(self):
+        pass
+
+    def prepare(self):
+        if self.config.target_platform == Platform.WINDOWS:
+            self.make = '''cd build/msys
+                           cmake -DCMAKE_TOOLCHAIN_FILE=toolchain-x86_64-w64-mingw32.cmake -DCMAKE_INSTALL_PREFIX=%s ../../source
+                           make''' % self.config.prefix
+            self.make_install = '''cd build/msys
+                                   cmake -DCMAKE_INSTALL_PREFIX=%(prefix)s -P cmake_install.cmake
+                                   cp libx265.dll %(prefix)s/bin
+                                ''' % {'prefix': self.config.prefix}
+        else:
+            self.make = '''cd build/linux
+                           cmake -DCMAKE_INSTALL_PREFIX=%s ../../source
+                           make''' % self.config.prefix
+            self.make_install = '''cd build/linux
+                                   cmake -DCMAKE_INSTALL_PREFIX=%(prefix)s -P cmake_install.cmake
+                                ''' % {'prefix': self.config.prefix}
+            
