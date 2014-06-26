@@ -1,0 +1,33 @@
+From ca3fe1f996312ec495f6845832b14c7ad79d9419 Mon Sep 17 00:00:00 2001
+From: Petteri Aimonen <petteri.aimonen@espotel.com>
+Date: Thu, 26 Jun 2014 10:22:17 +0300
+Subject: [PATCH 4/4] Enable external codecs
+
+---
+ ext/libav/gstavvidenc.c |    3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/ext/libav/gstavvidenc.c b/ext/libav/gstavvidenc.c
+index 95b0a0a..5c14458 100644
+--- a/ext/libav/gstavvidenc.c
++++ b/ext/libav/gstavvidenc.c
+@@ -921,7 +921,7 @@ gst_ffmpegvidenc_register (GstPlugin * plugin)
+         || in_plugin->id == AV_CODEC_ID_ZLIB) {
+       goto next;
+     }
+-
++#if 0
+     /* No encoders depending on external libraries (we don't build them, but
+      * people who build against an external ffmpeg might have them.
+      * We have native gstreamer plugins for all of those libraries anyway. */
+@@ -931,6 +931,7 @@ gst_ffmpegvidenc_register (GstPlugin * plugin)
+           in_plugin->name);
+       goto next;
+     }
++#endif
+ 
+     /* only video encoders */
+     if (!av_codec_is_encoder (in_plugin)
+-- 
+1.7.9.5
+

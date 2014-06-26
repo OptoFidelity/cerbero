@@ -1,0 +1,19 @@
+From e5771574424668e461ad3f41249dd9c98db752e2 Mon Sep 17 00:00:00 2001
+From: Petteri Aimonen <petteri.aimonen@espotel.com>
+Date: Thu, 26 Jun 2014 09:04:43 +0300
+Subject: [PATCH] Update libav to newest master
+
+---
+ gst-libs/ext/libav |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gst-libs/ext/libav b/gst-libs/ext/libav
+index e780c3d..593d232 160000
+--- a/gst-libs/ext/libav
++++ b/gst-libs/ext/libav
+@@ -1 +1 @@
+-Subproject commit e780c3daafe0588e035e752c771ebfcd2201746a
++Subproject commit 593d2326ef985cdffe413df629419938f7b07c4c
+-- 
+1.7.9.5
+

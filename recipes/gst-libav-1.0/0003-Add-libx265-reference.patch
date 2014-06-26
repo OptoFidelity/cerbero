@@ -1,0 +1,26 @@
+From 54dbc64ac0ea133c4c7b0a0152f1d4a8db3cf3fc Mon Sep 17 00:00:00 2001
+From: Petteri Aimonen <petteri.aimonen@espotel.com>
+Date: Thu, 26 Jun 2014 10:07:52 +0300
+Subject: [PATCH 3/3] Add libx265 reference
+
+---
+ configure.ac |    3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/configure.ac b/configure.ac
+index 807d77f..b3d9adb 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -231,6 +231,9 @@ if test "x$HAVE_BZ2" = "xno"; then
+   AC_WARN([libbz2 not found, matroska demuxer will not be able to read bz2 tracks])
+ fi
+ 
++dnl ** x265 library
++LIBS="$LIBS -lx265"
++
+ AC_ARG_ENABLE(lgpl,
+               [AC_HELP_STRING([--enable-lgpl], [build a LGPL licensed gst-libav])])
+ AM_CONDITIONAL(GST_LIBAV_ENABLE_LGPL, test "x$enable_lgpl" = "xyes")
+-- 
+1.7.9.5
+
